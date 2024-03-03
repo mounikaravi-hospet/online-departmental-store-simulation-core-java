@@ -31,5 +31,5 @@ public class Item extends Product{
 	}
 	public void setBuyingPrice(double buyingPrice) {
 		this.buyingPrice = buyingPrice;
-	}	
+	}
 }
