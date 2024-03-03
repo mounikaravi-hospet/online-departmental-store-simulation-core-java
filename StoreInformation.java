@@ -33,7 +33,13 @@ public class StoreInformation {
 	public void setUserLogged(boolean userLogged) {
 		this.userLogged = userLogged;
 	}
-	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public void registerUser(String username, String emailId, String password) {
 		users.add(new User(username, emailId, password));
 	}	
@@ -167,7 +173,19 @@ public class StoreInformation {
 		String category;
 		StoreInformation store = new StoreInformation();
 		
-//		productId, productName, sellingPrice, availableQuantity, itemName, category, buyingPrice
+//		int productId, String productName, double buyingPrice, int availableQuantity, String category, String itemName
+		store.addItems(10, "Pencil", 1.0, 200, "Stationery", "HB Pencil");
+		store.addItems(11, "Tomato", 1.5, 150, "Vegetables", "Red Tomato");
+		store.addItems(12, "Cucumber", 1.2, 120, "Vegetables", "Green Cucumber");
+		store.addItems(13, "Bread", 2.0, 100, "Grocery", "White Bread");
+		store.addItems(14, "Apple", 2.0, 180, "Fruits", "Red Apple");
+		store.addItems(15, "Orange", 1.8, 160, "Fruits", "Juicy Orange");
+		store.addItems(16, "Notebook", 3.0, 150, "Stationery", "A5 Spiral Notebook");
+		store.addItems(17, "Eggs", 3.5, 200, "Grocery", "Fresh Eggs");
+		store.addItems(18, "Shampoo", 8.0, 120, "Toiletry", "Anti-Dandruff Shampoo");
+		store.addItems(19, "Potato", 1.0, 220, "Vegetables", "Yellow Potato");
+
+		
 		store.registerUser("Anu", "anu@example.com", "123");
 		store.startUpMenu();
 		
@@ -188,19 +206,16 @@ public class StoreInformation {
 			System.out.println("Admin actions");
 			System.out.println("Total expenditure: " +store.totalAmountSpent());
 			System.out.println("Profits: " +store.calculateProfits());
+			
+			store.viewProducts();
+			if(cat.equals("y")) {
+				System.out.println("Enter the category you want to filter: ");
+				category = sc.next();
+				store.viewProductsByCategory(category);
+			}
 		}
 		
 		sc.close();
 		
 	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-
 }
